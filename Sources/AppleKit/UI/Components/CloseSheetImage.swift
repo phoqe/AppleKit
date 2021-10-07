@@ -2,6 +2,10 @@
 import SwiftUI
 
 public struct CloseSheetImage: View {
+    public init() {
+        
+    }
+
     public var body: some View {
         Image(systemName: "xmark.circle.fill")
             .accessibilityLabel("Close")
