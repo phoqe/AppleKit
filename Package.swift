@@ -11,15 +11,15 @@ let package = Package(
     products: [
         .library(
             name: "AppleKit",
-            targets: ["AppleKit"]),
+            targets: ["AppleKit"]
+        ),
     ],
-    dependencies: [
-
-    ],
+    dependencies: [],
     targets: [
         .target(
             name: "AppleKit",
-            dependencies: []),
+            dependencies: []
+        ),
         .testTarget(
             name: "AppleKitTests",
             dependencies: ["AppleKit"]),
