@@ -4,7 +4,6 @@ import PackageDescription
 
 let package = Package(
     name: "AppleKit",
-    defaultLocalization: "en",
     platforms: [
         .iOS(.v13)
     ],
