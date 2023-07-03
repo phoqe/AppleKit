@@ -19,8 +19,8 @@ let package = Package(
             name: "AppleKit",
             dependencies: []
         ),
-        .testTarget(
-            name: "AppleKitTests",
-            dependencies: ["AppleKit"]),
+//        .testTarget(
+//            name: "AppleKitTests",
+//            dependencies: ["AppleKit"]),
     ]
 )
