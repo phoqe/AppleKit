@@ -4,8 +4,8 @@ import SwiftUI
 @available(iOS 16.0, *)
 public struct PresentationView: View {
     public struct Button {
-        let title: LocalizedStringKey
-        let action: () -> Void
+        public let title: LocalizedStringKey
+        public let action: () -> Void
     }
     
     let systemImage: String?
