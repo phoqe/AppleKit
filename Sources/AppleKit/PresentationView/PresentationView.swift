@@ -2,7 +2,7 @@
 import SwiftUI
 
 @available(iOS 16.0, *)
-struct PresentationView: View {
+public struct PresentationView: View {
     struct Button {
         let title: LocalizedStringKey
         let action: () -> Void
@@ -44,7 +44,7 @@ struct PresentationView: View {
         disclaimer != nil || primaryButton != nil || secondaryButton != nil
     }
     
-    var body: some View {
+    public var body: some View {
         ZStack {
             ScrollView(showsIndicators: false) {
                 VStack(alignment: .center, spacing: 25) {
