@@ -6,6 +6,11 @@ public struct PresentationView: View {
     public struct Button {
         public let title: LocalizedStringKey
         public let action: () -> Void
+        
+        public init(title: LocalizedStringKey, action: @escaping () -> Void) {
+            self.title = title
+            self.action = action
+        }
     }
     
     let systemImage: String?
