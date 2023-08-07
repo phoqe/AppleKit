@@ -109,6 +109,14 @@ public struct PresentationView: View {
                         }
                         .buttonStyle(.borderedProminent)
                         .cornerRadius(15)
+                        
+                        if secondaryButton == nil {
+                            SwiftUI.Button("Set Up Later in Settings") {
+                                
+                            }
+                            .fontWeight(.semibold)
+                            .hidden()
+                        }
                     }
                     
                     if let secondaryButton {
@@ -137,6 +145,19 @@ struct PresentationView_Previews: PreviewProvider {
                         
                     }),
                     secondaryButton: .init(title: "Set Up Later in Settings", action: {
+                        
+                    })
+                )
+            }
+        
+        Text("Presentation")
+            .sheet(isPresented: .constant(true)) {
+                PresentationView(
+                    systemImage: "minus.plus.batteryblock.fill",
+                    title: "What’s New",
+                    subtitle: "Circular imports occur in Python when two or more modules depend on each other. This can create a problem because the modules cannot be loaded properly, and Python will raise an error.",
+                    disclaimer: "Circular imports occur in Python when two or more modules depend on each other. This can create a problem because the modules cannot be loaded properly, and Python will raise an error.",
+                    primaryButton: .init(title: "Continue", action: {
                         
                     })
                 )
