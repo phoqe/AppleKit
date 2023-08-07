@@ -3,7 +3,7 @@ import SwiftUI
 
 @available(iOS 16.0, *)
 public struct PresentationView: View {
-    struct Button {
+    public struct Button {
         let title: LocalizedStringKey
         let action: () -> Void
     }
@@ -18,7 +18,7 @@ public struct PresentationView: View {
     let primaryButton: PresentationView.Button?
     let secondaryButton: PresentationView.Button?
     
-    init(
+    public init(
         systemImage: String? = nil,
         
         title: LocalizedStringKey,
