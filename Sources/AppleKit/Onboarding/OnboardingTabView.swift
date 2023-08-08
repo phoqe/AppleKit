@@ -1,13 +1,19 @@
 import SwiftUI
 
-struct OnboardingTabView: View {
+internal struct OnboardingTabView<Content: View>: View {
+    
+    @ViewBuilder
+    let content: Content
+    
     var body: some View {
-        Text("Hello, World!")
+        content
     }
 }
 
 struct OnboardingTabView_Previews: PreviewProvider {
     static var previews: some View {
-        OnboardingTabView()
+        OnboardingTabView {
+            Text("Hello, World!")
+        }
     }
 }
