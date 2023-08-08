@@ -93,7 +93,8 @@ public struct PresentationView: View {
         }
         .if(showOverlay) { view in
             view.overlay(alignment: .bottom) {
-                VStack(alignment: .center, spacing: 25) {
+                VStack(spacing: 25) {
+                    
                     if let disclaimer {
                         Text(disclaimer)
                             .font(.caption)
@@ -101,6 +102,7 @@ public struct PresentationView: View {
                     }
                     
                     if let primaryButton {
+                        // TODO: Fixed size button
                         SwiftUI.Button(action: primaryButton.action) {
                             Text(primaryButton.title)
                                 .fontWeight(.semibold)
@@ -193,6 +195,16 @@ struct PresentationView_Previews: PreviewProvider {
             .sheet(isPresented: .constant(true)) {
                 PresentationView(
                     title: "What’s New"
+                )
+            }
+        
+        Text("Presentation")
+            .sheet(isPresented: .constant(true)) {
+                PresentationView(
+                    title: "What’s New",
+                    primaryButton: .init(title: "Continue", action: {
+                        
+                    })
                 )
             }
         
