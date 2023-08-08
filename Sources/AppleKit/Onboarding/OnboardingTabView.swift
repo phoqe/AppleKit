@@ -61,7 +61,7 @@ public struct OnboardingTabView<Content: View>: View {
                 .padding(.bottom, 125)
             }
             .mask {
-                LinearGradient(gradient: Gradient(colors: [.primary, .primary.opacity(0)]), startPoint: UnitPoint(x: 0.5, y: 0.85), endPoint: .bottom)
+                PresentationMask()
             }
         }
         .overlay(alignment: .bottom) {
@@ -79,10 +79,10 @@ struct OnboardingTabView_Previews: PreviewProvider {
         Text("Onboarding")
             .sheet(isPresented: .constant(true)) {
                 OnboardingView(selection: .constant(0), tabs: [
-                    OnboardingTabView(systemImage: "person.and.background.dotted", title: "Data & Privacy", subtitle: "This icon appears when an Apple feature asks to use vour personal information.\n\nYou won't see this with every feature since Apple collects this information only when needed to enable features, secure our services or personalise your experience.\n\nApple believes privacy is a fundamental human right, so every Apple product is designed to minimise the collection and use of your data, use on-device processing whenever possible, and provide transparency and control over your information.", primaryButton: .init(title: "Continue", action: {
-                        
-                    })) {
-                        
+                    OnboardingTabView(systemImage: "person.and.background.dotted", title: "Data & Privacy", subtitle: "This icon appears when an Apple feature asks to use vour personal information.", primaryButton: .init(title: "Continue", action: {})) {
+                        GroupBox {
+                            TextField("Annual Income", text: .constant(""))
+                        }
                     }
                 ])
             }

@@ -6,7 +6,7 @@ public struct OnboardingView<Content: View>: View {
     @Binding
     var selection: Int
     
-    let tabs: [Content]
+    public let tabs: [Content]
     
     public var body: some View {
         TabView(selection: $selection) {
