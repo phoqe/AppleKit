@@ -11,10 +11,8 @@ public struct OnboardingView<Content: View>: View {
     public var body: some View {
         TabView(selection: $selection) {
             ForEach(tabs.indices, id: \.self) { index in
-                OnboardingTabView {
-                    tabs[index]
-                }
-                .tag(index)
+                tabs[index]
+                    .tag(index)
             }
         }
         .tabViewStyle(.page(indexDisplayMode: .never))

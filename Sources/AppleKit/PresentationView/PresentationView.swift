@@ -3,16 +3,6 @@ import SwiftUI
 
 @available(iOS 16.0, *)
 public struct PresentationView: View {
-    public struct Button {
-        public let title: LocalizedStringKey
-        public let action: () -> Void
-        
-        public init(title: LocalizedStringKey, action: @escaping () -> Void) {
-            self.title = title
-            self.action = action
-        }
-    }
-    
     let systemImage: String?
     
     let title: LocalizedStringKey
@@ -20,8 +10,8 @@ public struct PresentationView: View {
     let text: LocalizedStringKey?
     
     let disclaimer: LocalizedStringKey?
-    let primaryButton: PresentationView.Button?
-    let secondaryButton: PresentationView.Button?
+    let primaryButton: PresentationButton?
+    let secondaryButton: PresentationButton?
     
     public init(
         systemImage: String? = nil,
@@ -31,8 +21,8 @@ public struct PresentationView: View {
         text: LocalizedStringKey? = nil,
         
         disclaimer: LocalizedStringKey? = nil,
-        primaryButton: PresentationView.Button? = nil,
-        secondaryButton: PresentationView.Button? = nil
+        primaryButton: PresentationButton? = nil,
+        secondaryButton: PresentationButton? = nil
     ) {
         self.systemImage = systemImage
         
@@ -87,47 +77,17 @@ public struct PresentationView: View {
             }
             .if(showOverlay) { view in
                 view.mask {
-                    LinearGradient(gradient: Gradient(colors: [.primary, .primary.opacity(0)]), startPoint: UnitPoint(x: 0.5, y: 0.85), endPoint: .bottom)
+                    PresentationMask()
                 }
             }
         }
         .if(showOverlay) { view in
             view.overlay(alignment: .bottom) {
-                VStack(spacing: 25) {
-                    
-                    if let disclaimer {
-                        Text(disclaimer)
-                            .font(.caption)
-                            .foregroundColor(.secondary)
-                    }
-                    
-                    if let primaryButton {
-                        // TODO: Fixed size button
-                        SwiftUI.Button(action: primaryButton.action) {
-                            Text(primaryButton.title)
-                                .fontWeight(.semibold)
-                                .padding(.vertical, 7.5)
-                                .frame(maxWidth: .infinity)
-                        }
-                        .buttonStyle(.borderedProminent)
-                        .cornerRadius(15)
-                        
-                        if secondaryButton == nil {
-                            SwiftUI.Button("Set Up Later in Settings") {
-                                
-                            }
-                            .fontWeight(.semibold)
-                            .hidden()
-                        }
-                    }
-                    
-                    if let secondaryButton {
-                        SwiftUI.Button(secondaryButton.title, action: secondaryButton.action)
-                            .fontWeight(.semibold)
-                    }
-                }
-                .padding(.horizontal, 50)
-                .multilineTextAlignment(.center)
+                PresentationOverlay(
+                    disclaimer: disclaimer,
+                    primaryButton: primaryButton,
+                    secondaryButton: secondaryButton
+                )
             }
         }
     }
