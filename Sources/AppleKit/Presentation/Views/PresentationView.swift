@@ -8,6 +8,7 @@ public struct PresentationView<Content: View>: View {
     let title: LocalizedStringKey
     let subtitle: LocalizedStringKey?
     let text: LocalizedStringKey?
+    let features: [PresentationFeature]?
     
     let disclaimer: LocalizedStringKey?
     let primaryButton: PresentationButton?
@@ -22,6 +23,7 @@ public struct PresentationView<Content: View>: View {
         title: LocalizedStringKey,
         subtitle: LocalizedStringKey? = nil,
         text: LocalizedStringKey? = nil,
+        features: [PresentationFeature]? = nil,
         
         disclaimer: LocalizedStringKey? = nil,
         primaryButton: PresentationButton? = nil,
@@ -35,6 +37,7 @@ public struct PresentationView<Content: View>: View {
         self.title = title
         self.subtitle = subtitle
         self.text = text
+        self.features = features
         
         self.disclaimer = disclaimer
         self.primaryButton = primaryButton
@@ -72,6 +75,9 @@ public struct PresentationView<Content: View>: View {
                     if let text {
                         Text(text)
                             .font(.callout)
+                    } else if let features {
+                        PresentationFeatureList(features: features)
+                            .padding(.top, 25)
                     } else {
                         content
                     }
@@ -173,6 +179,55 @@ struct PresentationView_Previews: PreviewProvider {
             .sheet(isPresented: .constant(true)) {
                 PresentationView(
                     title: "What’s New"
+                ) {
+                    
+                }
+            }
+        
+        Text("Presentation")
+            .sheet(isPresented: .constant(true)) {
+                PresentationView(
+                    title: "What’s New",
+                    features: [
+                        PresentationFeature(
+                            systemImage: "person.2",
+                            headline: "Shared Library",
+                            subheadline: "Combine photos and videos with the people closest to you and automatically share new photos from Camera."
+                        ),
+                        PresentationFeature(
+                            systemImage: "slider.horizontal.2.square.on.square",
+                            headline: "Copy & Paste Edits",
+                            subheadline: "Save time by making edits to one photo, then applying the changes to other photos with a tap."
+                        ),
+                        PresentationFeature(
+                            systemImage: "square.on.square",
+                            headline: "Shared Library",
+                            subheadline: "Quickly find and merge all your duplicate photos and videos from one central place in the Albums tab."
+                        )
+                    ]
+                ) {
+                    
+                }
+            }
+        
+        Text("Presentation")
+            .sheet(isPresented: .constant(true)) {
+                PresentationView(
+                    title: "What’s New",
+                    features: [
+                        PresentationFeature(
+                            emoji: "👩‍⚖️",
+                            subheadline: "Combine photos and videos with the people closest to you and automatically share new photos from Camera."
+                        ),
+                        PresentationFeature(
+                            emoji: "🦺",
+                            subheadline: "Save time by making edits to one photo, then applying the changes to other photos with a tap."
+                        ),
+                        PresentationFeature(
+                            emoji: "💵",
+                            subheadline: "Quickly find and merge all your duplicate photos and videos from one central place in the Albums tab."
+                        )
+                    ]
                 ) {
                     
                 }
