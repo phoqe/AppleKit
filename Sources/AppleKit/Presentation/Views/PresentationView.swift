@@ -5,12 +5,12 @@ import SwiftUI
 public struct PresentationView<Content: View>: View {
     let systemImage: String?
     
-    let title: LocalizedStringKey
-    let subtitle: LocalizedStringKey?
-    let text: LocalizedStringKey?
+    let title: String
+    let subtitle: String?
+    let text: String?
     let features: [PresentationFeature]?
     
-    let disclaimer: LocalizedStringKey?
+    let disclaimer: String?
     let primaryButton: PresentationButton?
     let secondaryButton: PresentationButton?
     
@@ -20,12 +20,12 @@ public struct PresentationView<Content: View>: View {
     public init(
         systemImage: String? = nil,
         
-        title: LocalizedStringKey,
-        subtitle: LocalizedStringKey? = nil,
-        text: LocalizedStringKey? = nil,
+        title: String,
+        subtitle: String? = nil,
+        text: String? = nil,
         features: [PresentationFeature]? = nil,
         
-        disclaimer: LocalizedStringKey? = nil,
+        disclaimer: String? = nil,
         primaryButton: PresentationButton? = nil,
         secondaryButton: PresentationButton? = nil,
         

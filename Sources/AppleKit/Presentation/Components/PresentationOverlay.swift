@@ -3,13 +3,13 @@ import SwiftUI
 @available(iOS 16.0, *)
 struct PresentationOverlay: View {
     
-    let disclaimer: LocalizedStringKey?
+    let disclaimer: String?
     
     let primaryButton: PresentationButton?
     let secondaryButton: PresentationButton?
 
     init(
-        disclaimer: LocalizedStringKey? = nil,
+        disclaimer: String? = nil,
         primaryButton: PresentationButton? = nil,
         secondaryButton: PresentationButton? = nil
     ) {
