@@ -70,10 +70,13 @@ public struct PresentationView<Content: View>: View {
                         Text(title)
                             .font(.largeTitle)
                             .fontWeight(.bold)
+                            .lineLimit(2)
+                            .allowsTightening(true)
                         
                         if let subtitle {
                             Text(subtitle)
                                 .font(.body)
+                                .allowsTightening(true)
                         }
                     }
                     .multilineTextAlignment(.center)
