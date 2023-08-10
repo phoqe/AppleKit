@@ -4,6 +4,7 @@ import SwiftUI
 @available(iOS 16.0, *)
 public struct PresentationView<Content: View>: View {
     let systemImage: String?
+    let emoji: String?
     
     let title: String
     let subtitle: String?
@@ -19,6 +20,7 @@ public struct PresentationView<Content: View>: View {
     
     public init(
         systemImage: String? = nil,
+        emoji: String? = nil,
         
         title: String,
         subtitle: String? = nil,
@@ -33,6 +35,7 @@ public struct PresentationView<Content: View>: View {
         content: () -> Content
     ) {
         self.systemImage = systemImage
+        self.emoji = emoji
         
         self.title = title
         self.subtitle = subtitle
@@ -59,6 +62,9 @@ public struct PresentationView<Content: View>: View {
                             Image(systemName: systemImage)
                                 .font(.system(size: UIFont.preferredFont(forTextStyle: .largeTitle).pointSize * 2))
                                 .foregroundColor(.accentColor)
+                        } else if let emoji {
+                            Text(emoji)
+                                .font(.system(size: UIFont.preferredFont(forTextStyle: .largeTitle).pointSize * 2.5))
                         }
                         
                         Text(title)
@@ -116,6 +122,24 @@ struct PresentationView_Previews: PreviewProvider {
             .sheet(isPresented: .constant(true)) {
                 PresentationView(
                     systemImage: "minus.plus.batteryblock.fill",
+                    title: "What’s New",
+                    subtitle: "Circular imports occur in Python when two or more modules depend on each other. This can create a problem because the modules cannot be loaded properly, and Python will raise an error.",
+                    disclaimer: "Circular imports occur in Python when two or more modules depend on each other. This can create a problem because the modules cannot be loaded properly, and Python will raise an error.",
+                    primaryButton: .init(title: "Continue", action: {
+                        
+                    }),
+                    secondaryButton: .init(title: "Set Up Later in Settings", action: {
+                        
+                    })
+                ) {
+                    
+                }
+            }
+        
+        Text("Presentation")
+            .sheet(isPresented: .constant(true)) {
+                PresentationView(
+                    emoji: "👶",
                     title: "What’s New",
                     subtitle: "Circular imports occur in Python when two or more modules depend on each other. This can create a problem because the modules cannot be loaded properly, and Python will raise an error.",
                     disclaimer: "Circular imports occur in Python when two or more modules depend on each other. This can create a problem because the modules cannot be loaded properly, and Python will raise an error.",
