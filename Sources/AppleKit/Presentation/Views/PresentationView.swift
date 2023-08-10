@@ -71,6 +71,7 @@ public struct PresentationView<Content: View>: View {
                         } else if let emoji {
                             Text(emoji)
                                 .font(.system(size: UIFont.preferredFont(forTextStyle: .largeTitle).pointSize * 2.75))
+                                .padding(.bottom, -10)
                         }
                         
                         Text(title)
@@ -146,6 +147,21 @@ struct PresentationView_Previews: PreviewProvider {
             .navigationTitle("Test")
             .navigationBarTitleDisplayMode(.inline)
         }
+        
+        Text("Presentation")
+            .sheet(isPresented: .constant(true)) {
+                PresentationView(
+                    emoji: "🤖",
+                    title: "What’s New",
+                    subtitle: "Circular imports occur in Python when two or more modules depend on each other. This can create a problem because the modules cannot be loaded properly, and Python will raise an error.",
+                    disclaimer: "Circular imports occur in Python when two or more modules depend on each other. This can create a problem because the modules cannot be loaded properly, and Python will raise an error.",
+                    primaryButton: .init(title: "Continue", action: {
+                        
+                    })
+                ) {
+                    
+                }
+            }
         
         Text("Presentation")
             .sheet(isPresented: .constant(true)) {
