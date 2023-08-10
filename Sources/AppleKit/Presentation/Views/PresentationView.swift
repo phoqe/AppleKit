@@ -15,6 +15,8 @@ public struct PresentationView<Content: View>: View {
     let primaryButton: PresentationButton?
     let secondaryButton: PresentationButton?
     
+    let sheet: Bool
+    
     @ViewBuilder
     let content: Content
     
@@ -31,6 +33,8 @@ public struct PresentationView<Content: View>: View {
         primaryButton: PresentationButton? = nil,
         secondaryButton: PresentationButton? = nil,
         
+        sheet: Bool = true,
+        
         @ViewBuilder
         content: () -> Content
     ) {
@@ -45,6 +49,8 @@ public struct PresentationView<Content: View>: View {
         self.disclaimer = disclaimer
         self.primaryButton = primaryButton
         self.secondaryButton = secondaryButton
+        
+        self.sheet = sheet
         
         self.content = content()
     }
@@ -64,7 +70,7 @@ public struct PresentationView<Content: View>: View {
                                 .foregroundColor(.accentColor)
                         } else if let emoji {
                             Text(emoji)
-                                .font(.system(size: UIFont.preferredFont(forTextStyle: .largeTitle).pointSize * 2.5))
+                                .font(.system(size: UIFont.preferredFont(forTextStyle: .largeTitle).pointSize * 2.75))
                         }
                         
                         Text(title)
@@ -91,7 +97,7 @@ public struct PresentationView<Content: View>: View {
                         content
                     }
                 }
-                .padding(.top, 50)
+                .padding(.top, sheet ? 50 : 25)
                 .padding(.horizontal, 50)
                 .if(showOverlay) { view in
                     view.padding(.bottom, 125)
@@ -121,41 +127,25 @@ public struct PresentationView<Content: View>: View {
 @available(iOS 16.0, *)
 struct PresentationView_Previews: PreviewProvider {
     static var previews: some View {
-        Text("Presentation")
-            .sheet(isPresented: .constant(true)) {
-                PresentationView(
-                    systemImage: "minus.plus.batteryblock.fill",
-                    title: "What’s New",
-                    subtitle: "Circular imports occur in Python when two or more modules depend on each other. This can create a problem because the modules cannot be loaded properly, and Python will raise an error.",
-                    disclaimer: "Circular imports occur in Python when two or more modules depend on each other. This can create a problem because the modules cannot be loaded properly, and Python will raise an error.",
-                    primaryButton: .init(title: "Continue", action: {
-                        
-                    }),
-                    secondaryButton: .init(title: "Set Up Later in Settings", action: {
-                        
-                    })
-                ) {
+        NavigationStack {
+            PresentationView(
+                emoji: "👶",
+                title: "What’s New",
+                subtitle: "Circular imports occur in Python when two or more modules depend on each other. This can create a problem because the modules cannot be loaded properly, and Python will raise an error.",
+                disclaimer: "Circular imports occur in Python when two or more modules depend on each other. This can create a problem because the modules cannot be loaded properly, and Python will raise an error.",
+                primaryButton: .init(title: "Continue", action: {
                     
-                }
-            }
-        
-        Text("Presentation")
-            .sheet(isPresented: .constant(true)) {
-                PresentationView(
-                    emoji: "👶",
-                    title: "What’s New",
-                    subtitle: "Circular imports occur in Python when two or more modules depend on each other. This can create a problem because the modules cannot be loaded properly, and Python will raise an error.",
-                    disclaimer: "Circular imports occur in Python when two or more modules depend on each other. This can create a problem because the modules cannot be loaded properly, and Python will raise an error.",
-                    primaryButton: .init(title: "Continue", action: {
-                        
-                    }),
-                    secondaryButton: .init(title: "Set Up Later in Settings", action: {
-                        
-                    })
-                ) {
+                }),
+                secondaryButton: .init(title: "Set Up Later in Settings", action: {
                     
-                }
+                }),
+                sheet: false
+            ) {
+                
             }
+            .navigationTitle("Test")
+            .navigationBarTitleDisplayMode(.inline)
+        }
         
         Text("Presentation")
             .sheet(isPresented: .constant(true)) {
