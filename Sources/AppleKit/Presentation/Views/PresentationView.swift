@@ -79,6 +79,7 @@ public struct PresentationView<Content: View>: View {
                             .fontWeight(.bold)
                             .lineLimit(2)
                             .allowsTightening(true)
+                            .fixedSize()
                         
                         if let subtitle {
                             Text(subtitle)
