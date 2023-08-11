@@ -99,7 +99,7 @@ public struct PresentationView<Content: View>: View {
                         content
                     }
                 }
-                .padding(.top, sheet ? 50 : 25)
+                .padding(.top, sheet ? 50 : 0)
                 .padding(.horizontal, 50)
                 .if(showOverlay) { view in
                     view.padding(.bottom, 125)
