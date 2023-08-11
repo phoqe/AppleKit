@@ -79,7 +79,7 @@ public struct PresentationView<Content: View>: View {
                             .fontWeight(.bold)
                             .lineLimit(2)
                             .allowsTightening(true)
-                            .fixedSize()
+                            .minimumScaleFactor(0.95)
                         
                         if let subtitle {
                             Text(subtitle)
@@ -133,8 +133,8 @@ struct PresentationView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
             PresentationView(
-                emoji: "👶",
-                title: "What’s New",
+                emoji: "⚖️",
+                title: "Advokat- och rättegångskostnader",
                 subtitle: "Circular imports occur in Python when two or more modules depend on each other. This can create a problem because the modules cannot be loaded properly, and Python will raise an error.",
                 disclaimer: "Circular imports occur in Python when two or more modules depend on each other. This can create a problem because the modules cannot be loaded properly, and Python will raise an error.",
                 primaryButton: .init(title: "Continue", action: {
@@ -147,8 +147,24 @@ struct PresentationView_Previews: PreviewProvider {
             ) {
                 
             }
-            .navigationTitle("Test")
-            .navigationBarTitleDisplayMode(.inline)
+        }
+        
+        NavigationStack {
+            PresentationView(
+                emoji: "⚖️",
+                title: "Fastighetsdeklaration",
+                subtitle: "Circular imports occur in Python when two or more modules depend on each other. This can create a problem because the modules cannot be loaded properly, and Python will raise an error.",
+                disclaimer: "Circular imports occur in Python when two or more modules depend on each other. This can create a problem because the modules cannot be loaded properly, and Python will raise an error.",
+                primaryButton: .init(title: "Continue", action: {
+                    
+                }),
+                secondaryButton: .init(title: "Set Up Later in Settings", action: {
+                    
+                }),
+                sheet: false
+            ) {
+                
+            }
         }
         
         Text("Presentation")
@@ -281,16 +297,16 @@ struct PresentationView_Previews: PreviewProvider {
                 }
             }
         
-        Text("Presentation")
-            .sheet(isPresented: .constant(true)) {
-                PresentationView(
-                    systemImage: "person.and.background.dotted",
-                    title: "Data & Privacy",
-                    subtitle: "This icon appears when an Apple feature asks to use vour personal information.\n\nYou won't see this with every feature since Apple collects this information only when needed to enable features, secure our services or personalise your experience.\n\nApple believes privacy is a fundamental human right, so every Apple product is designed to minimise the collection and use of your data, use on-device processing whenever possible, and provide transparency and control over your information."
-                ) {
-                    
-                }
-            }
+//        Text("Presentation")
+//            .sheet(isPresented: .constant(true)) {
+//                PresentationView(
+//                    systemImage: "person.and.background.dotted",
+//                    title: "Data & Privacy",
+//                    subtitle: "This icon appears when an Apple feature asks to use vour personal information.\n\nYou won't see this with every feature since Apple collects this information only when needed to enable features, secure our services or personalise your experience.\n\nApple believes privacy is a fundamental human right, so every Apple product is designed to minimise the collection and use of your data, use on-device processing whenever possible, and provide transparency and control over your information."
+//                ) {
+//
+//                }
+//            }
     }
 }
 #endif
