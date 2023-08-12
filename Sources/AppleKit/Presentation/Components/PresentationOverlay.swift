@@ -19,7 +19,7 @@ struct PresentationOverlay: View {
     }
     
     var body: some View {
-        VStack(spacing: 25) {
+        VStack(alignment: .center, spacing: 25) {
             if let disclaimer {
                 Text(disclaimer)
                     .font(.caption)
@@ -35,6 +35,7 @@ struct PresentationOverlay: View {
                 }
                 .buttonStyle(.borderedProminent)
                 .cornerRadius(15)
+                .frame(minWidth: UIScreen.main.bounds.width - 100, maxWidth: .infinity) // fixes weird padding issue where button would get small if no text, `100` is the padding on both sides
                 
                 if secondaryButton == nil {
                     SwiftUI.Button("Set Up Later in Settings") {
@@ -50,7 +51,7 @@ struct PresentationOverlay: View {
                     .fontWeight(.semibold)
             }
         }
-        .padding(.horizontal, 50) // TODO: when only button is shown and no text this shrinks button
+        .padding(.horizontal, 50)
         .multilineTextAlignment(.center)
     }
 }
