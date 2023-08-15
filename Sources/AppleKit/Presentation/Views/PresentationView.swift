@@ -5,6 +5,7 @@ import SwiftUI
 public struct PresentationView<Content: View>: View {
     let systemImage: String?
     let emoji: String?
+    let image: Image?
     
     let title: String
     let subtitle: String?
@@ -23,6 +24,7 @@ public struct PresentationView<Content: View>: View {
     public init(
         systemImage: String? = nil,
         emoji: String? = nil,
+        image: Image? = nil,
         
         title: String,
         subtitle: String? = nil,
@@ -40,6 +42,7 @@ public struct PresentationView<Content: View>: View {
     ) {
         self.systemImage = systemImage
         self.emoji = emoji
+        self.image = image
         
         self.title = title
         self.subtitle = subtitle
@@ -72,6 +75,9 @@ public struct PresentationView<Content: View>: View {
                             Text(emoji)
                                 .font(.system(size: UIFont.preferredFont(forTextStyle: .largeTitle).pointSize * 2.75))
                                 .padding(.bottom, -10)
+                        } else if let image {
+                            image
+                                .font(.system(size: UIFont.preferredFont(forTextStyle: .largeTitle).pointSize * 2))
                         }
                         
                         Text(title)
@@ -148,6 +154,24 @@ struct PresentationView_Previews: PreviewProvider {
                 
             }
         }
+        
+//        NavigationStack {
+//            PresentationView(
+//                emoji: "⚖️",
+//                title: "Advokat- och rättegångskostnader",
+//                subtitle: "Circular imports occur in Python when two or more modules depend on each other. This can create a problem because the modules cannot be loaded properly, and Python will raise an error.",
+//                disclaimer: "Circular imports occur in Python when two or more modules depend on each other. This can create a problem because the modules cannot be loaded properly, and Python will raise an error.",
+//                primaryButton: .init(title: "Continue", action: {
+//
+//                }),
+//                secondaryButton: .init(title: "Set Up Later in Settings", action: {
+//
+//                }),
+//                sheet: false
+//            ) {
+//
+//            }
+//        }
         
         NavigationStack {
             PresentationView(
