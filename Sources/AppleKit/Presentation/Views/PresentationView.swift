@@ -77,7 +77,8 @@ public struct PresentationView<Content: View>: View {
                                 .padding(.bottom, -10)
                         } else if let uiImage {
                             Image(uiImage: uiImage)
-                                .font(.system(size: UIFont.preferredFont(forTextStyle: .largeTitle).pointSize * 2))
+                                .resizable()
+                                .frame(width: 100, height: 100)
                         }
                         
                         Text(title)
