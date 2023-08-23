@@ -5,7 +5,9 @@ import SwiftUI
 public struct PresentationView<Content: View>: View {
     let systemImage: String?
     let emoji: String?
-    let uiImage: UIImage?
+    
+    @ViewBuilder
+    let image: Content?
     
     let title: String
     let subtitle: String?
@@ -24,7 +26,7 @@ public struct PresentationView<Content: View>: View {
     public init(
         systemImage: String? = nil,
         emoji: String? = nil,
-        uiImage: UIImage? = nil,
+        image: Content? = nil,
         
         title: String,
         subtitle: String? = nil,
@@ -42,7 +44,7 @@ public struct PresentationView<Content: View>: View {
     ) {
         self.systemImage = systemImage
         self.emoji = emoji
-        self.uiImage = uiImage
+        self.image = image
         
         self.title = title
         self.subtitle = subtitle
@@ -75,10 +77,8 @@ public struct PresentationView<Content: View>: View {
                             Text(emoji)
                                 .font(.system(size: UIFont.preferredFont(forTextStyle: .largeTitle).pointSize * 2.75))
                                 .padding(.bottom, -10)
-                        } else if let uiImage {
-                            Image(uiImage: uiImage)
-                                .resizable()
-                                .frame(width: 50, height: 50)
+                        } else if let image {
+                            image
                         }
                         
                         Text(title)
