@@ -78,7 +78,7 @@ public struct PresentationView<Content: View>: View {
                         } else if let uiImage {
                             Image(uiImage: uiImage)
                                 .resizable()
-                                .clipShape(RoundedRectangle(cornerRadius: 7.5))
+                                .clipShape(RoundedRectangle(cornerRadius: 10))
                                 .frame(width: 75, height: 75)
                         }
                         
